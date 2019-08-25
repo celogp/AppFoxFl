@@ -8,50 +8,75 @@ import 'dart:async';
 
 const _totVenda = 25.0;
 
-Widget myCard(BuildContext context, descricao, valor) => Card(
-            child: ListTile(
-              onTap: () {
-                showDialog(context: context,
-                builder: (BuildContext context) {
-                      return alert(context);
-                    },                
-                );
-              },
-              leading: CircleAvatar( child: Image(
-                image:new AssetImage('images/app/SemImagem.jpg')
-                )
-                ),
-              title: Text(descricao),
-              subtitle: Text('Valor R\$ '+ valor),
-            ),
-          );   
+class BlueBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 2,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+      ),
+    );
+  }
+}
+
+Widget myCard(BuildContext context, descricao, valor) =>  Card(
+    elevation: 2,
+      child:
+      ListTile(
+        leading:
+        SizedBox(
+          width: 45,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+
+            children: <Widget>[
+            //BlueBox(),
+          CircleAvatar(child: 
+          Image(image: AssetImage('images/app/SemImagem.jpg'),  )
+         ), 
+         
+
+          ],)
+        ),
+
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return alert(context);
+            },
+          );
+        },
+        title: Text(descricao),
+        subtitle: Text('Valor R\$ ' + valor),
+      ),
+    );
 
 Widget cancelaButton(BuildContext context) => FlatButton(
-  child: Text("Cancelar"),
-  onPressed:  () {
-    print('passou no cancelar');
-    Navigator.pop(context);
-  },
-);
+      child: Text("Cancelar"),
+      onPressed: () {
+        print('passou no cancelar');
+        Navigator.pop(context);
+      },
+    );
 
 Widget continuaButton(BuildContext context) => FlatButton(
-  child: Text("Confirmar"),
-  onPressed:  () {
-    print('passou no confirmar');
-    Navigator.pop(context);
-  },
-);
+      child: Text("Confirmar"),
+      onPressed: () {
+        print('passou no confirmar');
+        Navigator.pop(context);
+      },
+    );
 
 //configura o AlertDialog
 AlertDialog alert(BuildContext context) => AlertDialog(
-  title: Text("Retirar da venda ?"),
-//  content: Text("Deseja realmente ?"),
-  actions: [
-    cancelaButton(context),
-    continuaButton(context),
-  ],
-);
-
+      title: Text("Retirar da venda ?"),
+      actions: [
+        cancelaButton(context),
+        continuaButton(context),
+      ],
+    );
 
 class VenderPage extends StatefulWidget {
   @override
@@ -73,6 +98,7 @@ class _VenderPageState extends State<VenderPage> {
         title: Text("Venda R\$ " + _totVenda.toString()),
       ),
       body: ListView(
+
         padding: const EdgeInsets.all(1.0),
         children: <Widget>[
           myCard(context, 'Produto A', '10,00'),
