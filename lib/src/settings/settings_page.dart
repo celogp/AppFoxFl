@@ -74,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
       floatingActionButton: FloatingActionButton(
       onPressed: (){ _salvar(context); },
       child: Icon(Icons.save),
-      backgroundColor: Colors.pink,
+      backgroundColor: Colors.blue,
       ),
     );
   }

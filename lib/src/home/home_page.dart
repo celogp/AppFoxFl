@@ -27,9 +27,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    MaterialApp( 
+      debugShowCheckedModeBanner: false,
+      home:
+    Scaffold(
       appBar: AppBar(
-        title: Text("Caixa"),
+        title: Text("Caixa Rápido"),
         actions: <Widget>[
           // overflow menu
           PopupMenuButton<Choice>(
@@ -53,6 +57,8 @@ class _HomePageState extends State<HomePage> {
           WdtavaliarWidget(),
         ],
       ),
+    )
     );
+    
   }
 }
